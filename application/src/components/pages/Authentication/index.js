@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import router from '@/router'
 
-const BudgetManagerAPI = 'http://apiservice.lenmar.name:3001'
+const BudgetManagerAPI = 'http://localhost:3001'
 
 export default {
   user: { authenticated: false },
