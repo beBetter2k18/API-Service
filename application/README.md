@@ -8,6 +8,9 @@
 # install dependencies
 npm install
 
+npm i --save-dev sass-loader node-sass
+npm rebuild node-sass
+
 # serve with hot reload at localhost:8080
 npm run dev
 
