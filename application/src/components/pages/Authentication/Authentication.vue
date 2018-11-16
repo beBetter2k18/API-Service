@@ -7,7 +7,7 @@
                       prepend-icon="account_box"
                       :rules="rules"
                       required
-                      color="light-blue lighten-1">
+                      color="light-white lighten-1">
         </v-text-field>
 
         <v-text-field label="Password"
@@ -17,12 +17,12 @@
                       :append-icon="loginPasswordVisible ? 'visibility' : 'visibility_off'"
                       :append-icon-cb="() => (loginPasswordVisible = !loginPasswordVisible)"
                       :type="loginPasswordVisible ? 'text' : 'password'"
-                      color="light-blue lighten-1"
+                      color="light-white lighten-1"
                       required>
         </v-text-field>
 
         <v-btn block flat color="light-blue lighten-1" @click.native="signUpVisible = true">Create account</v-btn>
-        <v-btn block color="light-blue lighten-1" @click.native="submitAuthentication()">Login</v-btn>
+        <v-btn block color="light-white lighten-1" @click.native="submitAuthentication()">Login</v-btn>
       </v-form>
     </div>
 
@@ -33,7 +33,7 @@
                       prepend-icon="account_box"
                       :rules="rules"
                       required
-                      color="light-blue lighten-1">
+                      color="light-white lighten-1">
         </v-text-field>
 
         <v-text-field label="Password"
@@ -43,11 +43,11 @@
                       :append-icon="signUpPasswordVisible ? 'visibility' : 'visibility_off'"
                       :append-icon-cb="() => (signUpPasswordVisible = !signUpPasswordVisible)"
                       :type="signUpPasswordVisible ? 'text' : 'password'"
-                      color="light-blue lighten-1"
+                      color="light-white lighten-1"
                       required>
         </v-text-field>
 
-        <v-btn block color="light-blue lighten-1" @click.native="submitSignUp()">Sign Up</v-btn>
+        <v-btn block color="light-white lighten-1" @click.native="submitSignUp()">Sign Up</v-btn>
       </v-form>
     </div>
 
