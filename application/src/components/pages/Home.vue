@@ -120,7 +120,7 @@
   import ListHeader from './../List/ListHeader'
   import ListBody from './../List/ListBody'
 
-  const BudgetManagerAPI = 'https://focus-budget-manager-api.herokuapp.com'
+  const BudgetManagerAPI = 'http://localhost:3001'
 
   export default {
     components: {
