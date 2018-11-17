@@ -12,7 +12,7 @@ api.login = (User) => (req, res) => {
 
         if (!user) res.status(401).send({
             success: false,
-            message: 'Authentication failed. User not found.'
+            message: 'Введенное вами имя пользователя не принадлежит аккаунту. Проверьте свое имя пользователя и повторите попытку.'
         });
         else {
             user.comparePassword(req.body.password, (error, matches) => {
@@ -29,7 +29,7 @@ api.login = (User) => (req, res) => {
                 } else {
                     res.status(401).send({
                         success: false,
-                        message: 'Authentication failed. Wrong password.'
+                        message: 'К сожалению, вы ввели неверный пароль. Проверьте свой пароль еще раз.'
                     });
                 }
             });

@@ -1,13 +1,13 @@
 import Axios from 'axios'
 import router from '@/router'
 
-const BudgetManagerAPI = 'http://localhost:3001'
+const RpdManagerAPI = 'http://localhost:3001'
 
 export default {
   user: { authenticated: false },
 
   authenticate (context, credentials, redirect) {
-    Axios.post(`${BudgetManagerAPI}/api/v1/auth`, credentials)
+    Axios.post(`${RpdManagerAPI}/api/v1/auth`, credentials)
         .then(({data}) => {
           context.$cookie.set('token', data.token, '1D')
           context.$cookie.set('user_id', data.user._id, '1D')
@@ -23,7 +23,7 @@ export default {
   },
 
   signup (context, credentials, redirect) {
-    Axios.post(`${BudgetManagerAPI}/api/v1/signup`, credentials)
+    Axios.post(`${RpdManagerAPI}/api/v1/signup`, credentials)
         .then(() => {
           context.validSignUp = true
 

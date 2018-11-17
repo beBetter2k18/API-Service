@@ -1,34 +1,36 @@
 <template>
   <header class="l-header-container">
-    <v-layout row wrap :class="budgetsVisible ? 'l-budgets-header' : 'l-clients-header'">
-      <v-flex xs12 md5>
-        <v-text-field v-model="searchValue"
-                      label="Search"
-                      append-icon="search"
-                      :color="budgetsVisible ? 'light-blue lighten-1' : 'green lighten-1'">
-        </v-text-field>
+    <v-layout row wrap :class="rpdsVisible ? 'l-rpds-header' : 'l-clients-header'">
+      <v-flex xs12  md2>
+        <v-btn block
+               :color="rpdsVisible ? 'light-blue lighten-1' : 'green lighten-1'">
+               {{"LOGO"}}
+        </v-btn>
       </v-flex>
-
       <v-flex xs12 offset-md1 md1>
         <v-btn block
-               :color="budgetsVisible ? 'light-blue lighten-1' : 'green lighten-1'"
-               @click.native="$emit('toggleVisibleData')">
-               {{ budgetsVisible ? "Clients" : "Budgets" }}
+               :color="rpdsVisible ? 'light-blue lighten-1' : 'green lighten-1'"
+               @click.native="$emit('toggleVisibleDataRpd')">
+               {{ "РПД" }}
+        </v-btn>
+      </v-flex>
+        <v-flex xs12 offset-md1 md2>
+        <v-btn block
+               :color="rpdsVisible ? 'light-blue lighten-1' : 'green lighten-1'"
+               @click.native="$emit('toggleVisibleDataUser')">
+               {{ "Пользователи"}}
         </v-btn>
       </v-flex>
 
       <v-flex xs12 offset-md1 md2>
-        <v-select label="Status"
-                  :color="budgetsVisible ? 'light-blue lighten-1' : 'green lighten-1'"
-                  v-model="status"
-                  :items="statusItems"
-                  single-line
-                  @change="selectState">
-        </v-select>
+        <v-text-field v-model="searchValue"
+                      label="Поиск"
+                      append-icon="search"
+                      :color="rpdsVisible ? 'light-blue lighten-1' : 'green lighten-1'">
+        </v-text-field>
       </v-flex>
-
       <v-flex xs12 offset-md1 md1>
-        <v-btn block color="red lighten-1 white--text" @click.native="submitSignout()">Sign out</v-btn>
+        <v-btn block color="red lighten-1 white--text" @click.native="submitSignout()">Выйти</v-btn>
       </v-flex>
     </v-layout>
   </header>
@@ -37,7 +39,7 @@
 <script>
   import Authentication from '@/components/pages/Authentication'
   export default {
-    props: ['budgetsVisible', 'selectState', 'search'],
+    props: ['rpdsVisible', 'selectState', 'search'],
     data () {
       return {
         searchValue: '',
@@ -72,7 +74,7 @@
     padding: 0 15px;
     min-width: 272px;
 
-    .l-budgets-header {
+    .l-rpds-header {
       label, input, .icon, .input-group__selections__comma {
         color: #29b6f6!important;
       }

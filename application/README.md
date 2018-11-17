@@ -1,6 +1,6 @@
-# focus-budget-manager
+# focus-Rpd-manager
 
-> A Budget Manager application
+> A Rpd Manager application
 
 ## Build Setup
 

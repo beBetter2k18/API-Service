@@ -1,16 +1,16 @@
 <template>
   <div class="l-create-page">
-    <budget-creation v-if="budgetCreation && !editPage" slot="budget-creation" :clients="clients" :saveBudget="saveBudget"></budget-creation>
-    <client-creation v-if="!budgetCreation && !editPage" slot="client-creation" :saveClient="saveClient"></client-creation>
+    <rpd-creation v-if="rpdCreation && !editPage" slot="rpd-creation" :clients="clients" :saveRpd="saveRpd"></rpd-creation>
+    <client-creation v-if="!rpdCreation && !editPage" slot="client-creation" :saveClient="saveClient"></client-creation>
 
-    <budget-edit v-else-if="budgetEdit && editPage"
-      slot="budget-creation"
+    <rpd-edit v-else-if="rpdEdit && editPage"
+      slot="rpd-creation"
       :clients="clients"
-      :selectedBudget="budget"
+      :selectedRpd="rpd"
       :fixClientNameAndUpdate="fixClientNameAndUpdate">
-    </budget-edit>
+    </rpd-edit>
 
-    <client-edit v-else-if="!budgetEdit && editPage"
+    <client-edit v-else-if="!rpdEdit && editPage"
       slot="client-creation"
       :selectedClient="client"
       :updateClient="updateClient">
@@ -19,20 +19,20 @@
 </template>
 
 <script>
-  import BudgetCreation from './../Creation/BudgetCreation'
+  import RpdCreation from './../Creation/RpdCreation'
   import ClientCreation from './../Creation/ClientCreation'
-  import BudgetEdit from './../Creation/BudgetEdit'
+  import RpdEdit from './../Creation/RpdEdit'
   import ClientEdit from './../Creation/ClientEdit'
   export default {
     props: [
-      'budgetCreation', 'clients', 'saveBudget',
-      'saveClient', 'budget', 'client', 'updateClient',
-      'fixClientNameAndUpdate', 'editPage', 'budgetEdit'
+      'rpdCreation', 'clients', 'saveRpd',
+      'saveClient', 'rpd', 'client', 'updateClient',
+      'fixClientNameAndUpdate', 'editPage', 'rpdEdit'
     ],
     components: {
-      'budget-creation': BudgetCreation,
+      'rpd-creation': RpdCreation,
       'client-creation': ClientCreation,
-      'budget-edit': BudgetEdit,
+      'rpd-edit': RpdEdit,
       'client-edit': ClientEdit
     }
   }

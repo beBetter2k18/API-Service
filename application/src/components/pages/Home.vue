@@ -1,7 +1,8 @@
 <template>
   <main class="l-home-page">
-    <app-header :budgetsVisible="budgetsVisible"
-      @toggleVisibleData="budgetsVisible = !budgetsVisible; budgetCreation = !budgetCreation"
+    <app-header :rpdsVisible="rpdsVisible"
+      @toggleVisibleDataRpd="rpdsVisible=true; rpdCreation=true"
+      @toggleVisibleDataUser="rpdsVisible=false; rpdCreation=false"
       :selectState="selectState"
       :search="search"
       v-model="search">
@@ -9,30 +10,75 @@
 
     <div class="l-home">
       <h4 class="white--text text-xs-center my-0">
-        Focus Budget Manager
+        Автоматизированная система генерации РПД
       </h4>
+      <v-tooltip bottom v-if="rpdsVisible">
+        <v-btn color="purple lighten-2"
+               dark
+               small
+               fab
+               slot="activator"
+               @click.native="rpdCreation = false; listPage = true; rpdsVisible = true">
+              <v-icon>assessment</v-icon>
+        </v-btn>
+        <span>Список РПД</span>
+      </v-tooltip>
+         <v-tooltip bottom v-if="rpdsVisible">
+              <v-btn color="light-blue lighten-1"
+                     dark
+                     small
+                     fab
+                     slot="activator"
+                     @click.native="rpdCreation = true; listPage = false; editPage = false; createPage = true">
+                    <v-icon>assignment</v-icon>
+              </v-btn>
+              <span>Добавить РПД</span>
+            </v-tooltip>
+            <v-tooltip bottom v-if="!rpdsVisible">
+              <v-btn color="deep-orange lighten-2"
+                     dark
+                     small
+                     fab
+                     slot="activator"
+                     @click.native="rpdCreation = false; listPage = true; rpdsVisible = false;">
+                    <v-icon>supervisor_account</v-icon>
+              </v-btn>
+              <span>Список пользователей</span>
+            </v-tooltip>
+            <v-tooltip bottom v-if="!rpdsVisible">
+              <v-btn color="green lighten-1"
+                     dark
+                     small
+                     fab
+                     slot="activator"
+                     @click.native="rpdCreation = false; listPage = false; editPage = false; createPage = true">
+                    <v-icon>account_circle</v-icon>
+              </v-btn>
+              <span>Добаввить пользователя</span>
+            </v-tooltip>
+
 
       <list v-if="listPage">
-        <list-header slot="list-header" :headers="budgetsVisible ? budgetHeaders : clientHeaders"></list-header>
+        <list-header slot="list-header" :headers="rpdsVisible ? rpdHeaders : clientHeaders"></list-header>
         <list-body slot="list-body"
-                   :budgetsVisible="budgetsVisible"
-                   :data="budgetsVisible ? budgets : clients"
+                   :rpdsVisible="rpdsVisible"
+                   :data="rpdsVisible ? rpds : clients"
                    :search="search"
                    :deleteItem="deleteItem"
-                   :getBudget="getBudget"
+                   :getRpd="getRpd"
                    :getClient="getClient"
-                   :parsedBudgets="parsedBudgets">
+                   :parsedRpds="parsedRpds">
         </list-body>
       </list>
 
       <create v-else-if="createPage"
-        :budgetCreation="budgetCreation"
-        :budgetEdit="budgetEdit"
+        :rpdCreation="rpdCreation"
+        :rpdEdit="rpdEdit"
         :editPage="editPage"
         :clients="clients"
-        :budget="budget"
+        :rpd="rpd"
         :client="client"
-        :saveBudget="saveBudget"
+        :saveRpd="saveRpd"
         :saveClient="saveClient"
         :fixClientNameAndUpdate="fixClientNameAndUpdate"
         :updateClient="updateClient">
@@ -46,71 +92,7 @@
       {{ message }}
     </v-snackbar>
 
-    <v-fab-transition>
-      <v-speed-dial v-model="fab"
-                    bottom
-                    right
-                    fixed
-                    direction="top"
-                    transition="scale-transition">
-          <v-btn slot="activator"
-                 color="red lighten-1"
-                 dark
-                 fab
-                 v-model="fab">
-                <v-icon>add</v-icon>
-                <v-icon>close</v-icon>
-          </v-btn>
 
-          <v-tooltip left>
-            <v-btn color="light-blue lighten-1"
-                   dark
-                   small
-                   fab
-                   slot="activator"
-                   @click.native="budgetCreation = true; listPage = false; editPage = false; createPage = true">
-                  <v-icon>assignment</v-icon>
-            </v-btn>
-            <span>Add new Budget</span>
-          </v-tooltip>
-
-          <v-tooltip left>
-            <v-btn color="green lighten-1"
-                   dark
-                   small
-                   fab
-                   slot="activator"
-                   @click.native="budgetCreation = false; listPage = false; editPage = false; createPage = true">
-                  <v-icon>account_circle</v-icon>
-            </v-btn>
-            <span>Add new Client</span>
-          </v-tooltip>
-
-          <v-tooltip left>
-            <v-btn color="purple lighten-2"
-                   dark
-                   small
-                   fab
-                   slot="activator"
-                   @click.native="budgetCreation = false; listPage = true; budgetsVisible = true">
-                  <v-icon>assessment</v-icon>
-            </v-btn>
-            <span>List Budgets</span>
-          </v-tooltip>
-
-          <v-tooltip left>
-            <v-btn color="deep-orange lighten-2"
-                   dark
-                   small
-                   fab
-                   slot="activator"
-                   @click.native="budgetCreation = false; listPage = true; budgetsVisible = false;">
-                  <v-icon>supervisor_account</v-icon>
-            </v-btn>
-            <span>List Clients</span>
-          </v-tooltip>
-      </v-speed-dial>
-    </v-fab-transition>
   </main>
 </template>
 
@@ -120,7 +102,7 @@
   import ListHeader from './../List/ListHeader'
   import ListBody from './../List/ListBody'
 
-  const BudgetManagerAPI = 'http://localhost:3001'
+  const RpdManagerAPI = 'http://localhost:3001'
 
   export default {
     components: {
@@ -129,16 +111,16 @@
     },
     data () {
       return {
-        parsedBudgets: null,
-        budget: null,
+        parsedRpds: null,
+        rpd: null,
         client: null,
         state: null,
         search: null,
-        budgets: [],
+        rpds: [],
         clients: [],
-        budgetHeaders: ['Client', 'Title', 'Status', 'Actions'],
-        clientHeaders: ['Client', 'Email', 'Phone', 'Actions'],
-        budgetsVisible: true,
+        rpdHeaders: ['Автор', 'Дисциплина', 'Статус', 'Редактировать'],
+        clientHeaders: ['Пользователь', 'Email', 'Телефон', 'Редактировать'],
+        rpdsVisible: true,
         snackbar: false,
         timeout: 6000,
         message: '',
@@ -146,13 +128,13 @@
         listPage: true,
         createPage: false,
         editPage: false,
-        budgetCreation: true,
-        budgetEdit: true,
+        rpdCreation: true,
+        rpdEdit: true,
         snackColor: 'red lighten-1'
       }
     },
     mounted () {
-      this.getAllBudgets()
+      this.getAllRpds()
       this.getAllClients()
       this.hidden = false
     },
@@ -161,27 +143,27 @@
         if (this.search !== null || this.search !== '') {
           const searchTerm = this.search
           const regex = new RegExp(`^(${searchTerm})`, 'g')
-          const results = this.budgets.filter(budget => budget.client.match(regex))
-          this.parsedBudgets = results
+          const results = this.rpds.filter(rpd => rpd.client.match(regex))
+          this.parsedRpds = results
         } else {
-          this.parsedBudgets = null
+          this.parsedRpds = null
         }
       }
     },
     methods: {
-      getAllBudgets () {
-        Axios.get(`${BudgetManagerAPI}/api/v1/budget`, {
+      getAllRpds () {
+        Axios.get(`${RpdManagerAPI}/api/v1/rpd`, {
           headers: { 'Authorization': Authentication.getAuthenticationHeader(this) },
           params: { user_id: this.$cookie.get('user_id') }
         }).then(({data}) => {
-          this.budgets = this.dataParser(data, '_id', 'client', 'title', 'state', 'client_id')
+          this.rpds = this.dataParser(data, '_id', 'client', 'title', 'state', 'client_id')
         }).catch(error => {
           this.errorHandler(error)
         })
       },
 
       getAllClients () {
-        Axios.get(`${BudgetManagerAPI}/api/v1/client`, {
+        Axios.get(`${RpdManagerAPI}/api/v1/client`, {
           headers: { 'Authorization': Authentication.getAuthenticationHeader(this) },
           params: { user_id: this.$cookie.get('user_id') }
         }).then(({data}) => {
@@ -191,23 +173,23 @@
         })
       },
 
-      getBudget (budget) {
-        Axios.get(`${BudgetManagerAPI}/api/v1/budget/single`, {
+      getRpd (rpd) {
+        Axios.get(`${RpdManagerAPI}/api/v1/rpd/single`, {
           headers: { 'Authorization': Authentication.getAuthenticationHeader(this) },
           params: {
             user_id: this.$cookie.get('user_id'),
-            _id: budget._id
+            _id: rpd._id
           }
         }).then(({data}) => {
-          this.budget = data
-          this.enableEdit('budget')
+          this.rpd = data
+          this.enableEdit('rpd')
         }).catch(error => {
           this.errorHandler(error)
         })
       },
 
       getClient (client) {
-        Axios.get(`${BudgetManagerAPI}/api/v1/client/single`, {
+        Axios.get(`${RpdManagerAPI}/api/v1/client/single`, {
           headers: { 'Authorization': Authentication.getAuthenticationHeader(this) },
           params: {
             user_id: this.$cookie.get('user_id'),
@@ -222,59 +204,59 @@
       },
 
       enableEdit (type) {
-        if (type === 'budget') {
+        if (type === 'rpd') {
           this.listPage = false
-          this.budgetEdit = true
-          this.budgetCreation = false
+          this.rpdEdit = true
+          this.rpdCreation = false
           this.editPage = true
         } else if (type === 'client') {
           this.listPage = false
-          this.budgetEdit = false
-          this.budgetCreation = false
+          this.rpdEdit = false
+          this.rpdCreation = false
           this.editPage = true
         }
       },
 
-      saveBudget (budget) {
-        Axios.post(`${BudgetManagerAPI}/api/v1/budget`, budget, {
+      saveRpd (rpd) {
+        Axios.post(`${RpdManagerAPI}/api/v1/rpd`, rpd, {
           headers: { 'Authorization': Authentication.getAuthenticationHeader(this) },
           params: { user_id: this.$cookie.get('user_id') }
         })
         .then(res => {
-          this.resetFields(budget)
+          this.resetFields(rpd)
           this.snackbar = true
           this.message = res.data.message
           this.snackColor = 'green lighten-1'
-          this.getAllBudgets()
+          this.getAllRpds()
         })
         .catch(error => {
           this.errorHandler(error)
         })
       },
 
-      fixClientNameAndUpdate (budget) {
+      fixClientNameAndUpdate (rpd) {
         this.clients.find(client => {
-          if (client._id === budget.client_id) {
-            budget.client = client.name
+          if (client._id === rpd.client_id) {
+            rpd.client = client.name
           }
         })
 
-        this.updateBudget(budget)
+        this.updateRpd(rpd)
       },
 
-      updateBudget (budget) {
-        Axios.put(`${BudgetManagerAPI}/api/v1/budget/single`, budget, {
+      updateRpd (rpd) {
+        Axios.put(`${RpdManagerAPI}/api/v1/rpd/single`, rpd, {
           headers: { 'Authorization': Authentication.getAuthenticationHeader(this) },
           params: { user_id: this.$cookie.get('user_id') }
         })
         .then(() => {
           this.snackbar = true
-          this.message = 'Budget updated'
+          this.message = 'Rpd updated'
           this.snackColor = 'green lighten-1'
           this.listPage = true
-          this.budgetCreation = false
-          this.budgetsVisible = true
-          this.getAllBudgets()
+          this.rpdCreation = false
+          this.rpdsVisible = true
+          this.getAllRpds()
         })
         .catch(error => {
           this.errorHandler(error)
@@ -282,7 +264,7 @@
       },
 
       updateClient (client) {
-        Axios.put(`${BudgetManagerAPI}/api/v1/client/single`, client, {
+        Axios.put(`${RpdManagerAPI}/api/v1/client/single`, client, {
           headers: { 'Authorization': Authentication.getAuthenticationHeader(this) },
           params: { user_id: this.$cookie.get('user_id') }
         })
@@ -291,8 +273,8 @@
           this.message = 'Client updated'
           this.snackColor = 'green lighten-1'
           this.listPage = true
-          this.budgetCreation = false
-          this.budgetsVisible = false
+          this.rpdCreation = false
+          this.rpdsVisible = false
           this.getAllClients()
         })
         .catch(error => {
@@ -301,7 +283,7 @@
       },
 
       saveClient (client) {
-        Axios.post(`${BudgetManagerAPI}/api/v1/client`, client, {
+        Axios.post(`${RpdManagerAPI}/api/v1/client`, client, {
           headers: { 'Authorization': Authentication.getAuthenticationHeader(this) },
           params: { user_id: this.$cookie.get('user_id') }
         })
@@ -319,8 +301,8 @@
 
       deleteItem (selected, items, api) {
         let targetApi = ''
-        api ? targetApi = 'budget' : targetApi = 'client'
-        Axios.delete(`${BudgetManagerAPI}/api/v1/${targetApi}`, {
+        api ? targetApi = 'rpd' : targetApi = 'client'
+        Axios.delete(`${RpdManagerAPI}/api/v1/${targetApi}`, {
           headers: { 'Authorization': Authentication.getAuthenticationHeader(this) },
           params: {
             user_id: this.$cookie.get('user_id'),
@@ -331,7 +313,7 @@
           this.removeItem(selected, items)
         })
         .then(() => {
-          api ? this.getAllBudgets() : this.getAllClients()
+          api ? this.getAllRpds() : this.getAllClients()
         })
         .catch(error => {
           this.errorHandler(error)
@@ -385,15 +367,15 @@
 
       selectState (state) {
         this.state = state
-        state === 'all' ? this.getAllBudgets() : this.getBudgetsByState(state)
+        state === 'all' ? this.getAllRpds() : this.getRpdsByState(state)
       },
 
-      getBudgetsByState (state) {
-        Axios.get(`${BudgetManagerAPI}/api/v1/budget/state`, {
+      getRpdsByState (state) {
+        Axios.get(`${RpdManagerAPI}/api/v1/rpd/state`, {
           headers: { 'Authorization': Authentication.getAuthenticationHeader(this) },
           params: { user_id: this.$cookie.get('user_id'), state }
         }).then(({data}) => {
-          this.budgets = this.dataParser(data, '_id', 'client', 'title', 'state', 'client_id')
+          this.rpds = this.dataParser(data, '_id', 'client', 'title', 'state', 'client_id')
         }).catch(error => {
           this.errorHandler(error)
         })

@@ -1,40 +1,40 @@
 <template>
   <section class="l-list-body">
     <div class="md-list-item"
-         v-if="data != null && parsedBudgets === null"
+         v-if="data != null && parsedRpds === null"
          v-for="item in data">
 
-      <div :class="budgetsVisible ? 'md-budget-info white--text' : 'md-client-info white--text'"
+      <div :class="rpdsVisible ? 'md-rpd-info white--text' : 'md-client-info white--text'"
             v-for="info in item"
             v-if="info != item._id && info != item.client_id">
         {{ info }}
       </div>
 
-      <div :class="budgetsVisible ? 'l-budget-actions white--text' : 'l-client-actions white--text'">
+      <div :class="rpdsVisible ? 'l-rpd-actions white--text' : 'l-client-actions white--text'">
         <v-btn small flat color="yellow accent-1" @click.native="getItemAndEdit(item)">
           <v-icon>mode_edit</v-icon>
         </v-btn>
-        <v-btn small flat color="red lighten-1" @click.native="deleteItem(item, data, budgetsVisible)">
+        <v-btn small flat color="red lighten-1" @click.native="deleteItem(item, data, rpdsVisible)">
           <v-icon>delete_forever</v-icon>
         </v-btn>
       </div>
     </div>
 
     <div class="md-list-item"
-         v-if="parsedBudgets !== null"
-         v-for="item in parsedBudgets">
+         v-if="parsedRpds !== null"
+         v-for="item in parsedRpds">
 
-      <div :class="budgetsVisible ? 'md-budget-info white--text' : 'md-client-info white--text'"
+      <div :class="rpdsVisible ? 'md-rpd-info white--text' : 'md-client-info white--text'"
             v-for="info in item"
             v-if="info != item._id && info != item.client_id">
         {{ info }}
       </div>
 
-      <div :class="budgetsVisible ? 'l-budget-actions white--text' : 'l-client-actions white--text'">
+      <div :class="rpdsVisible ? 'l-rpd-actions white--text' : 'l-client-actions white--text'">
         <v-btn small flat color="yellow accent-1" @click.native="getItemAndEdit(item)">
           <v-icon>mode_edit</v-icon>
         </v-btn>
-        <v-btn small flat color="red lighten-1" @click.native="deleteItem(item, data, budgetsVisible)">
+        <v-btn small flat color="red lighten-1" @click.native="deleteItem(item, data, rpdsVisible)">
           <v-icon>delete_forever</v-icon>
         </v-btn>
       </div>
@@ -44,10 +44,10 @@
 
 <script>
   export default {
-    props: ['data', 'budgetsVisible', 'deleteItem', 'getBudget', 'getClient', 'parsedBudgets'],
+    props: ['data', 'rpdsVisible', 'deleteItem', 'getRpd', 'getClient', 'parsedRpds'],
     methods: {
       getItemAndEdit (item) {
-        !item.phone ? this.getBudget(item) : this.getClient(item)
+        !item.phone ? this.getRpd(item) : this.getClient(item)
       }
     }
   }
@@ -71,7 +71,7 @@
         margin: 0;
       }
 
-      .md-budget-info {
+      .md-rpd-info {
         flex-basis: 25%;
         width: 100%;
         background-color: rgba(0, 175, 255, 0.45);
@@ -96,7 +96,7 @@
       }
 
       .md-client-info {
-        @extend .md-budget-info;
+        @extend .md-rpd-info;
         background-color: rgba(102, 187, 106, 0.45)!important;
 
         &:nth-of-type(2) {
@@ -104,7 +104,7 @@
         }
       }
 
-      .l-budget-actions {
+      .l-rpd-actions {
         flex-basis: 25%;
         display: flex;
         background-color: rgba(0, 175, 255, 0.45);
@@ -119,7 +119,7 @@
       }
 
       .l-client-actions {
-        @extend .l-budget-actions;
+        @extend .l-rpd-actions;
         background-color: rgba(102, 187, 106, 0.45)!important;
       }
     }

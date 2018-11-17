@@ -96,6 +96,7 @@
         },
         newUser: {
           username: '',
+          email: '',
           password: ''
         },
         message: ''

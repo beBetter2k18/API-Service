@@ -1,10 +1,10 @@
 {
-  "name": "focus-budget-manager",
+  "name": "focus-Rpd-manager",
   "version": "1.0.0",
-  "description": "A Budget Manager application",
+  "description": "A Rpd Manager application",
   "author": "Gustavo Domaradzki <gutzedomaradzki@gmail.com>",
   "private": true,
-  "homepage": "https://github.com/gdomaradzki/focus-budget-manager",
+  "homepage": "https://github.com/beBetter2k18/API-Service",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
