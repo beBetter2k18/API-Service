@@ -299,7 +299,7 @@
         })
       },
 
-      deleteItem (selected, items, api) {
+      deleteItem (selected, literats, api) {
         let targetApi = ''
         api ? targetApi = 'rpd' : targetApi = 'client'
         Axios.delete(`${RpdManagerAPI}/api/v1/${targetApi}`, {
@@ -310,7 +310,7 @@
           }
         })
         .then(() => {
-          this.removeItem(selected, items)
+          this.removeItem(selected, literats)
         })
         .then(() => {
           api ? this.getAllRpds() : this.getAllClients()
@@ -335,33 +335,33 @@
         }
       },
 
-      removeItem (selected, items) {
-        items.forEach((item, index) => {
-          if (item === selected) {
-            items.splice(index, 1)
+      removeItem (selected, literats) {
+        literats.forEach((literat, index) => {
+          if (literat === selected) {
+            literats.splice(index, 1)
           }
         })
       },
 
       dataParser (targetedArray, ...options) {
         let parsedData = []
-        targetedArray.forEach(item => {
+        targetedArray.forEach(literat => {
           let parsedItem = {}
-          options.forEach(option => (parsedItem[option] = item[option]))
+          options.forEach(option => (parsedItem[option] = literat[option]))
           parsedData.push(parsedItem)
         })
         return parsedData
       },
 
-      resetFields (item) {
-        for (let key in item) {
-          item[key] = null
+      resetFields (literat) {
+        for (let key in literat) {
+          literat[key] = null
 
           if (key === 'quantity' || key === 'price') {
-            item[key] = 0
+            literat[key] = 0
           }
 
-          item['items'] = []
+          literat['literats'] = []
         }
       },
 

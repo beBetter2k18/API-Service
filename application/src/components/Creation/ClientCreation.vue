@@ -27,7 +27,7 @@
       </v-flex>
 
       <v-flex xs12 md2 offset-md10>
-        <v-btn block color="md-add-item-btn green lighten-1" @click.native="saveClient(client)">Save</v-btn>
+        <v-btn block color="md-add-item-btn green lighten-1" @click.native="saveClient(client)">Сохранить</v-btn>
       </v-flex>
     </v-layout>
   </div>
