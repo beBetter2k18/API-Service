@@ -1,4 +1,5 @@
 <template>
+
   <main class="l-home-page">
     <app-header :rpdsVisible="rpdsVisible"
       @toggleVisibleDataRpd="rpdsVisible=true; rpdCreation=true"
@@ -12,6 +13,7 @@
       <h4 class="white--text text-xs-center my-0">
         Автоматизированная система генерации РПД
       </h4>
+
       <v-tooltip bottom v-if="rpdsVisible">
         <v-btn color="purple lighten-2"
                dark

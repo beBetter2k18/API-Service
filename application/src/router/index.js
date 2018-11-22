@@ -34,6 +34,16 @@ const router = new Router({
       path: '/login',
       name: 'Authentication',
       component: Authentication
+    },
+    {
+      path: '/rpd',
+      name: 'RpdCreation',
+      components: {
+        default: Create,
+        header: Header,
+        list: List,
+        create: Create
+      }
     }
   ]
 })

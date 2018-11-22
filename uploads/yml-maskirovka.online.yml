@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2018-21-11 12:12">
+<shop>
+ <name>maskirovka.online</name>
+    <company>maskirovka.online</company>
+    <url>http://maskirovka.online</url>
+    <currencies>
+      <currency id="RUR" rate="1" />
+    </currencies>
+
+<categories>
+
+
+<category id="1">Все товары</category>
+<category id="10" parentId="1">Спорт и отдых</category>
+<category id="100" parentId="10">Охота и рыбалка</category>
+<category id="1000" parentId="100">Аксессуары</category>
+
+</categories>
+<delivery-options>
+<option cost="0" days="1-3" order-before="17"/>
+</delivery-options>
+<cpa>1</cpa>
+
+<offers>
+ <offer id="481" available="true">
+        <url>http://maskirovka.online/product/maskirovochnaya-set-mkt-2l/</url>
+        <price>1550</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1000</categoryId>
+        <picture>http://maskirovka.online/wp-content/uploads/2018/02/2л2-2.jpg</picture>
+         <name>Маскировочная сеть МКТ-2Л</name>
+     <market_category>Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</market_category>
+        <description><![CDATA[
+
+Маскировочная сеть МКТ-2Л  Настоящая военная маскировочная сеть марки МКТ-2Л. Прочная капроновая нить сетевой основы имеет специальную антибактериальную пропитку. Материал с трудом поддается возгоранию и способен к самотушению, не боится влияния агрессивных химических веществ.
+Размер ячеек – 50х50 мм.
+Сохраняет рабочие функции при температуре от -40 до +40 °C.
+Неограниченный срок эксплуатации при условии отсутствия механических повреждений.
+Гарантия 2 года с условием соблюдения инструкций.
+
+]]></description>
+        <param name="Тип/категория товара">Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</param>
+         <param name="Цвет">зеленый</param>
+          <manufacturer_warranty>true</manufacturer_warranty>
+           <country_of_origin>Россия</country_of_origin>
+      </offer>
+
+  <offer id="160" available="true">
+         <url>http://maskirovka.online/product/maskirovochnaya-set-mkt-3l/</url>
+         <price>2500</price>
+         <currencyId>RUR</currencyId>
+         <categoryId>1000</categoryId>
+         <picture>http://maskirovka.online/wp-content/uploads/2018/02/3л.jpg</picture>
+        <name>Маскировочная сеть МКТ-3Л</name>
+      <market_category>Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</market_category>
+         <description><![CDATA[
+Покрытие для маскировки МКТ-3Л на сетевой основе с вплетенными полиэтиленовыми полосками, окрашенными в цвет, соответствующий летнему ландшафту.
+ Покрытие не боится химических веществ, может использоваться вечно при условии отсутствия бреши и прочих повреждений. Гарантия 2 года с условием соблюдения инструкций.
+
+ ]]></description>
+         <param name="Тип/категория товара">Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</param>
+          <param name="Цвет">зеленый</param>
+           <manufacturer_warranty>true</manufacturer_warranty>
+            <country_of_origin>Россия</country_of_origin>
+       </offer>
+
+  <offer id="161" available="true">
+        <url>http://maskirovka.online/product/maskirovochnaya-set-mkt-2p/</url>
+        <price>1700</price>
+
+         <currencyId>RUR</currencyId>
+         <categoryId>1000</categoryId>
+           <picture>http://maskirovka.online/wp-content/uploads/2018/02/2п.jpg</picture>
+            <name>Маскировочная сеть МКТ-2П</name>
+      <market_category>Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</market_category>
+         <description><![CDATA[
+Маскировочная сеть МКТ 2П является универсальным предметом, который поможет решить проблему маскировки, украсить дачную территории или скрыть недостатки на местности.
+ ]]></description>
+         <param name="Тип/категория товара">Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</param>
+           <manufacturer_warranty>true</manufacturer_warranty>
+            <country_of_origin>Россия</country_of_origin>
+       </offer>
+
+  <offer id="162" available="true">
+        <url>http://maskirovka.online/product/maskirovochnaya-set-mkt-2p-sploshnaya/</url>
+        <price>2000</price>
+
+         <currencyId>RUR</currencyId>
+         <categoryId>1000</categoryId>
+           <picture>http://maskirovka.online/wp-content/uploads/2018/02/2п-сплошная.jpg</picture>
+            <name>Маскировочная сеть МКТ-2П (сплошная)</name>
+      <market_category>Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</market_category>
+         <description><![CDATA[
+Покрытие для маскировки МКТ-2П (сплошная) на сетевой основе с вплетенными полиэтиленовыми полосками.
+ Покрытие не боится химических веществ, может использоваться вечно при условии отсутствия бреши и прочих повреждений. Гарантия 2 года с условием соблюдения инструкций.
+
+ ]]></description>
+         <param name="Тип/категория товара">Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</param>
+           <manufacturer_warranty>true</manufacturer_warranty>
+            <country_of_origin>Россия</country_of_origin>
+       </offer>
+
+  <offer id="170" available="false">
+        <url>http://maskirovka.online/product/maskirovochnaya-set-mkt-3p/</url>
+        <price>2500</price>
+
+         <currencyId>RUR</currencyId>
+         <categoryId>1000</categoryId>
+          <picture>http://maskirovka.online/wp-content/uploads/2018/02/3п.jpg</picture>
+            <name>Маскировочная сеть МКТ-2П (сплошная)</name>
+      <market_category>Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</market_category>
+         <description><![CDATA[
+Маскировочная сеть МКТ-3П – универсальный атрибут, высокая эстетика которого и максимальная прочность позволяют применять данную маскировочную сеть для целей охоты, скрытия нелицеприятных особенностей дачного участка, разделения функциональных зон, декорирования беседки.
+ ]]></description>
+         <param name="Тип/категория товара">Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</param>
+           <manufacturer_warranty>true</manufacturer_warranty>
+            <country_of_origin>Россия</country_of_origin>
+       </offer>
+         <offer id="171" available="true">
+               <url>http://maskirovka.online/product/maskirovochnaya-set-mkt-2s/</url>
+               <price>3400</price>
+
+                <currencyId>RUR</currencyId>
+                <categoryId>1000</categoryId>
+                 <picture>http://maskirovka.online/wp-content/uploads/2018/03/%D0%BC%D0%BA%D1%82-2%D1%813.jpg</picture>
+                <picture>http://maskirovka.online/wp-content/uploads/2018/03/%D0%BC%D0%BA%D1%82-2%D1%812.jpg</picture>
+                <picture>http://maskirovka.online/wp-content/uploads/2018/03/%D0%BC%D0%BA%D1%82-2%D1%814.jpg</picture>
+                <name>Маскировочная сеть МКТ-2С</name>
+             <market_category>Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</market_category>
+                <description>
+                <![CDATA[
+                Прочная капроновая нить сетевой основы имеет специальную антибактериальную пропитку. Материал с трудом поддается возгоранию и способен к самотушению, не боится влияния агрессивных химических веществ. Цвета окраски покрытия - белый.
+                ]]></description>
+                <manufacturer_warranty>true</manufacturer_warranty>
+                <country_of_origin>Россия</country_of_origin>
+              </offer>
+                 <offer id="172" available="true">
+                       <url>http://maskirovka.online/product/maskirovochnaya-set-s-lykom-zelenaya/</url>
+                       <price>2300</price>
+
+                        <currencyId>RUR</currencyId>
+                        <categoryId>1000</categoryId>
+                         <picture>http://maskirovka.online/wp-content/uploads/2018/02/%D0%A1-%D0%BB%D1%8B%D0%BA%D0%BE%D0%BC%D0%B7%D0%B5%D0%BB.jpg</picture>
+                        <picture>http://maskirovka.online/wp-content/uploads/2018/02/%D0%A1-%D0%BB%D1%8B%D0%BA%D0%BE%D0%BC%D0%B7%D0%B5%D0%BB2.jpg</picture>
+                        <name>Маскировочная сеть с лыком (бежевая)</name>
+                     <market_category>Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</market_category>
+                        <description>
+                        <![CDATA[
+                        Прочная капроновая нить сетевой основы имеет специальную антибактериальную пропитку. Материал с трудом поддается возгоранию и способен к самотушению, не боится влияния агрессивных химических веществ. Цвета окраски покрытия -  светло-зеленый, темно-зеленый.
+                        ]]></description>
+                        <manufacturer_warranty>true</manufacturer_warranty>
+                        <country_of_origin>Россия</country_of_origin>
+                      </offer>
+
+                 <offer id="173" available="true">
+                       <url>http://maskirovka.online/product/maskirovochnaya-set-s-lykom-bezhevaya/</url>
+                       <price>2300</price>
+
+                        <currencyId>RUR</currencyId>
+                        <categoryId>1000</categoryId>
+                         <picture>http://maskirovka.online/wp-content/uploads/2018/02/%D0%A1-%D0%BB%D1%8B%D0%BA%D0%BE%D0%BC%D0%B7%D0%B5%D0%BB.jpg</picture>
+                        <picture>http://maskirovka.online/wp-content/uploads/2018/02/%D0%A1-%D0%BB%D1%8B%D0%BA%D0%BE%D0%BC%D0%B7%D0%B5%D0%BB2.jpg</picture>
+                        <name>Маскировочная сеть с лыком (зеленая)</name>
+                     <market_category>Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</market_category>
+                        <description>
+                        <![CDATA[
+                        Прочная капроновая нить сетевой основы имеет специальную антибактериальную пропитку. Материал с трудом поддается возгоранию и способен к самотушению, не боится влияния агрессивных химических веществ. Цвета окраски покрытия -  бежевый, светло-зеленый.
+                        ]]></description>
+                        <manufacturer_warranty>true</manufacturer_warranty>
+                        <country_of_origin>Россия</country_of_origin>
+                      </offer>
+
+                         <offer id="174" available="true">
+                               <url>http://maskirovka.online/product/maskirovochnaya-set-mkt-3l-listva/</url>
+                               <price>2500</price>
+
+                                <currencyId>RUR</currencyId>
+                                <categoryId>1000</categoryId>
+                                 <picture>http://maskirovka.online/wp-content/uploads/2018/01/DSC09813-1-1.jpg</picture>
+                                <picture>http://maskirovka.online/wp-content/uploads/2018/01/DSC09810-1-1.jpg</picture>
+                                <name>Маскировочная сеть МКТ-3Л (листва)</name>
+                             <market_category>Все товары/Спорт и отдых/Охота и рыбалка/Аксессуары</market_category>
+                                <description>
+                                <![CDATA[ Маскировочная сеть
+                                демонстрирует отличные эксплуатационные
+                                характеристики:не выгорает, не промерзает да же при температуре -40 и не плавится при температуре +40, сложно поддается горению, способна к самотушению.Площадь ячеек капроновой сетевой основы составляет 25 см. Покрытие не боится химических веществ, может использоваться вечно при условии отсутствия бреши и прочих повреждений.]]></description>
+                                <manufacturer_warranty>true</manufacturer_warranty>
+                                <country_of_origin>Россия</country_of_origin>
+                              </offer>
+
+
+</offers>
+</shop>
+</yml_catalog>

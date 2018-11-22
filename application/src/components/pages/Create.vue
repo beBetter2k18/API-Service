@@ -19,9 +19,12 @@
 </template>
 
 <script>
+  import ListHeader from './../List/ListHeader'
+  import ListBody from './../List/ListBody'
   import RpdCreation from './../Creation/RpdCreation'
   import ClientCreation from './../Creation/ClientCreation'
   import RpdEdit from './../Creation/RpdEdit'
+
   import ClientEdit from './../Creation/ClientEdit'
   export default {
     props: [
@@ -30,6 +33,8 @@
       'fixClientNameAndUpdate', 'editPage', 'rpdEdit'
     ],
     components: {
+      'list-header': ListHeader,
+      'list-body': ListBody,
       'rpd-creation': RpdCreation,
       'client-creation': ClientCreation,
       'rpd-edit': RpdEdit,

@@ -1,14 +1,23 @@
 <template>
   <div class="l-rpd-creation">
     <v-layout row wrap>
-      <v-flex xs12 md5>
+      <v-flex xs12 md3>
         <v-text-field label="Дисциплина"
                       v-model="rpd.title"
                       required
                       color="light-blue lighten-1">
         </v-text-field>
       </v-flex>
-      <v-flex xs12 offset-md1 md3>
+
+      <v-flex xs12 offset-md1 md2>
+        <v-text-field
+          label="Шифр дисциплины"
+          v-model="rpd.codeD"
+        >
+        </v-text-field>
+      </v-flex>
+
+      <v-flex xs12 offset-md1 md2>
         <v-select
           label="Автор"
           :items="clients"
@@ -28,6 +37,118 @@
       </v-flex>
 
       <v-flex xs12  md12>
+        <v-radio-group v-model="rpd.radio_bachelor_master" row required>
+          <v-radio
+            label="Бакалавриат"
+            color="light-blue lighten-1"
+            value="bachelor"
+          ></v-radio>
+          <v-radio
+            label="Магистратура"
+            color="light-blue lighten-1"
+            value="master"
+          ></v-radio>
+        <v-radio
+          label="Аспирантура"
+          color="light-blue lighten-1"
+          value="graduateSchool"
+        ></v-radio>
+      </v-radio-group>
+      </v-flex>
+
+      <v-flex xs12 offset-md1 md3>
+        <v-select
+          label="Факультет"
+          :items="faculties"
+          v-model="rpd.faculty"
+        >
+        </v-select>
+      </v-flex>
+
+      <v-flex xs12 offset-md1 md3  >
+        <v-select
+          label="Кафедра"
+          :items="departments1"
+          v-model="rpd.department"
+        >
+        </v-select>
+      </v-flex>
+
+      <v-flex xs12 offset-md1 md2>
+        <v-select
+          label="Профиль"
+          :items="sections"
+          v-model="rpd.section"
+        >
+        </v-select>
+      </v-flex>
+
+      <v-flex xs12 md12>
+        <v-text-field
+          label="Руководитель ОПОП"
+          v-model="rpd.rukOpop"
+        >
+        </v-text-field>
+      </v-flex>
+
+      <v-flex xs12 md12>
+        <h3 style="font-size: 120%;  color: #ffffff">Рабочая программа утверждена на кафедре </h3>
+      </v-flex>
+
+      <v-flex xs12 offset-md1 md2>
+        <v-text-field
+          label="Протокол №"
+          v-model="rpd.numProtocolKafedra"
+        >
+        </v-text-field>
+      </v-flex>
+
+      <v-flex xs12 offset-md1 md3>
+        <v-text-field
+          label="Дата"
+          v-model="rpd.dataKafedra"
+        >
+        </v-text-field>
+      </v-flex>
+
+      <v-flex xs12 offset-md1 md4>
+        <v-text-field
+          label="Зав. кафедрой"
+          v-model="rpd.zavKafedra"
+        >
+        </v-text-field>
+      </v-flex>
+
+      <v-flex xs12 md12>
+        <h3 style="font-size: 120%;  color: #ffffff">Рабочая программа одобрена на заседании УМК факультета </h3>
+      </v-flex>
+
+      <v-flex xs12 offset-md1 md2>
+        <v-text-field
+          label="Протокол №"
+          v-model="rpd.numProtocolUmk"
+        >
+        </v-text-field>
+      </v-flex>
+
+      <v-flex xs12 offset-md1 md3>
+        <v-text-field
+          label="Дата"
+          v-model="rpd.dataUmk"
+        >
+        </v-text-field>
+      </v-flex>
+
+      <v-flex xs12 offset-md1 md4>
+        <v-text-field
+          label="Председатель УМК"
+          v-model="rpd.predUmk"
+        >
+        </v-text-field>
+      </v-flex>
+      <uploadxls></uploadxls>
+
+      <v-flex xs12  md12>
       <v-text-field label="Описание"
                     v-model="rpd.description"
                     textarea
@@ -36,7 +157,7 @@
       </v-text-field>
   </v-flex>
 
-      <v-flex xs12 md6>
+      <v-flex xs12 md5>
         <v-text-field
           label="Цель и задачи изучения дисциплины"
           textarea
@@ -45,7 +166,7 @@
         </v-text-field>
       </v-flex>
 
-      <v-flex xs12  md6>
+      <v-flex xs12  offset-md1 md6>
         <v-text-field
           label="Описать место дисциплины в структуре ООП ВО (ВПО)"
           textarea
@@ -67,7 +188,7 @@
         >
         </v-text-field>
       </v-flex>
-      <v-flex xs12  md4>
+      <v-flex xs12  md3>
         <v-text-field
           label="Знать"
           textarea
@@ -75,7 +196,7 @@
         >
         </v-text-field>
       </v-flex>
-      <v-flex xs12 md4>
+      <v-flex xs12 offset-md1 md3>
         <v-text-field
           label="Уметь"
           textarea
@@ -83,7 +204,7 @@
         >
         </v-text-field>
       </v-flex>
-      <v-flex xs12 md4>
+      <v-flex xs12 offset-md1 md3>
         <v-text-field
           label="Владеть"
           textarea
@@ -91,7 +212,6 @@
         >
         </v-text-field>
       </v-flex>
-
       <v-flex xs12 md5>
         <v-text-field
           label="Вид оценочного средства"
@@ -147,10 +267,11 @@
         <v-text-field
           label="Литература"
           textarea
-          v-model="rpd.own"
+          v-model="rpd.ruk"
         >
         </v-text-field>
       </v-flex>
+
       <v-flex xs12 offset-md1 md6>
         <v-text-field
           label="Вопрос на зачет/экзамен"
@@ -159,10 +280,6 @@
         >
         </v-text-field>
       </v-flex>
-
-
-
-
       <v-flex xs12 md2 offset-md10>
         <v-btn block color="md-add-item-btn green lighten-1" @click.native="saveRpd(rpd)">Сохранить</v-btn>
       </v-flex>
@@ -171,57 +288,79 @@
 </template>
 
 <script>
-  export default {
-    props: ['clients', 'saveRpd'],
-    data () {
-      return {
-        rpd: {
-          title: null,
-          description: null,
-          objectives: null,
-          placeDisp: null,
-          numberSemester: null,
-          totalHours: null,
-          numberCredits: null,
-          numberLab: null,
-          numberPractica: null,
-          numberSeminar: null,
-          numberIndependentWork: null,
-          state: 'writing',
-          client: null,
-          items: [
-            {
-              title: null,
-              type: null,
-              quantity: 0
-            }
-          ]
-        },
-        states: [
-          'редактируется', 'на проверке', 'отправлена на доработку', 'утверждена'
-        ]
-      }
-    },
-    methods: {
-      addItem () {
-        const items = this.rpd.items
-        const item = {
-          title: '',
-          type: '',
-          quantity: 0
-        }
-        items.push(item)
-      },
-      removeItem (selected) {
-        const items = this.rpd.items
-        items.forEach((item, index) => {
-          if (item === selected) {
-            items.splice(index, 1)
+import uploadxls from './../Creation/uploadxls'
+export default {
+  props: ['clients', 'saveRpd'],
+  components: {
+    'uploadxls': uploadxls
+  },
+  data () {
+    return {
+      rpd: {
+        title: null,
+        description: null,
+        objectives: null,
+        placeDisp: null,
+        numberSemester: null,
+        totalHours: null,
+        numberCredits: null,
+        numberLab: null,
+        numberPractica: null,
+        numberSeminar: null,
+        numberIndependentWork: null,
+        state: 'редактируется',
+        client: null,
+        items: [
+          {
+            title: null,
+            type: null,
+            quantity: 0
           }
-        })
+        ]
+      },
+      faculties: [
+        'Факультет экономики, менеджмента и информационных технологий', 'Факультет психологии и педагогического образования', 'Факультет истории, искусств и крымскотатарского языка и литературы', 'Филологический факультет', 'Инженерно-технологический факультет'
+      ],
+      departments1: [
+        '38.03.01. Экономика', '09.03.03 Прикладная информатика', '38.03.02 Менеджмент',
+        '38.04.01 Экономика', '38.04.02 Менеджмент', '09.04.03 Прикладная информатика',
+        '38.06.01 Экономика',
+        '44.04.01 Педагогическое образование', '37.04.01 Психология', '44.04.03 Специальное (дефектологическое) образование',
+        '44.03.01 Педагогическое образование', '44.03.03 Специальное (дефектологическое) образование', '37.03.01 Психология', '45.03.01 Филология',
+        '45.04.01 Филология', '45.06.01. Языкознание и литературоведение', '10.01.01. Русская литература',
+        '15.03.01 Машиностроение', '15.03.05 Конструкторско-технологическое обеспечение машиностроительных производств', '20.03.01 Техносферная безопасность', '23.03.03 Эксплуатация транспортно-технологических машин и комплексов', '44.03.04 Профессиональное обучение'
+      ],
+      sections: [
+        'Бухгалтерский учет, анализ и аудит', 'Финансовый контроль и государственный аудит', 'Налоги и налогообложение', 'Мировая экономика',
+        'Прикладная информатика в информационной сфере',
+        'Менеджмент (гостиничный, курортный и туристический бизнес', 'Логистика и управление цепями поставок'
+      ],
+      states: [
+        'редактируется', 'на проверке', 'отправлена на доработку', 'утверждена'
+      ]
+
+    }
+  },
+  methods: {
+    addItem () {
+      const items = this.rpd.items
+      const item = {
+        title: '',
+        type: '',
+        quantity: 0
       }
+      items.push(item)
+    },
+    removeItem (selected) {
+      const items = this.rpd.items
+      items.forEach((item, index) => {
+        if (item === selected) {
+          items.splice(index, 1)
+        }
+      })
     }
   }
+}
 </script>
 
 <style lang="scss">
