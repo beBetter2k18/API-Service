@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="l-rpd-creation">
     <v-layout row wrap>
       <v-flex xs12 md3>
@@ -83,6 +83,7 @@
         </v-select>
       </v-flex>
 
+
       <v-flex xs12 md12>
         <v-text-field
           label="Руководитель ОПОП"
@@ -90,6 +91,24 @@
         >
         </v-text-field>
       </v-flex>
+
+ <v-flex xs12 offset-md1 md2>
+        <v-text-field
+          label="Город"
+          v-model="rpd.town"
+        >
+        </v-text-field>
+      </v-flex>
+
+
+  <v-flex xs12 offset-md1 md2>
+        <v-text-field
+          label="Год"
+          v-model="rpd.year"
+        >
+        </v-text-field>
+      </v-flex>      
+
 
       <v-flex xs12 md12>
         <h3 style="font-size: 120%;  color: #ffffff">Рабочая программа утверждена на кафедре </h3>
@@ -298,6 +317,8 @@ export default {
     return {
       rpd: {
         title: null,
+        town: null,
+        year: null,
         description: null,
         objectives: null,
         placeDisp: null,
