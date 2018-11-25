@@ -12,8 +12,7 @@
       <v-flex xs12 offset-md1 md2>
         <v-text-field
           label="Шифр дисциплины"
-          v-model="rpd.codeD"
-        >
+          v-model="rpd.codeD" >
         </v-text-field>
       </v-flex>
 
@@ -110,7 +109,44 @@
       </v-flex>      
 
 
-      <v-flex xs12 md12>
+   <h3 style="font-size: 120%;  color: #ffffff">Рабочая программа дисциплины </h3>
+ <v-text-field 
+                     label="Дисциплина"
+                      v-model="rpd.title"
+                      required
+                      color="light-blue lighten-1">
+   </v-text-field> 
+  <h3 style="font-size: 120%;  color: #ffffff">для для бакалавров (магистров/аспирантов) направления подготовки </h3>
+       <v-text-field
+          label="Шифр дисциплины"
+          v-model="rpd.codeD" >
+        </v-text-field>
+         <v-select
+          label="Профиль"
+          :items="sections"
+          v-model="rpd.section"
+        >
+        </v-select>
+   <h3 style="font-size: 120%;  color: #ffffff">составлена на основании ФГОС ВО (ВПО) и учебного плана по направлению подготовки  </h3>
+      <v-text-field
+          label="Шифр дисциплины"
+          v-model="rpd.codeD" >
+        </v-text-field>
+<h3 style="font-size: 120%;  color: #ffffff">, утвержденного Ученым советом ГБОУВО РК КИПУ от  </h3>
+       
+       <v-text-field
+          label="Протокол №"
+          v-model="rpd.numPrSovet" >
+        </v-text-field>
+
+      <v-text-field
+          label="Дата"
+          v-model="rpd.dataSovet" >
+        </v-text-field>
+ 
+
+
+<v-flex xs12 md12>
         <h3 style="font-size: 120%;  color: #ffffff">Рабочая программа утверждена на кафедре </h3>
       </v-flex>
 
@@ -319,6 +355,7 @@ export default {
         title: null,
         town: null,
         year: null,
+        dataSovet: null,
         description: null,
         objectives: null,
         placeDisp: null,
