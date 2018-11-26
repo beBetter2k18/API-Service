@@ -2,7 +2,7 @@
   <div class="l-rpd-creation">
     <v-layout row wrap>
       <tabs :options = "{useUrlFragment: false}">
-              <tab prefix="<i class='material-icons icon'>insert_comment</i>"  name = "Основная информация">
+              <tab prefix="<i class='material-icons icon'>info</i>"  name = "Основная информация">
                 <v-layout row wrap>
                   <v-flex xs12 offset-md1 md5>
                     <v-text-field label="Дисциплина"
@@ -94,7 +94,7 @@
                 </v-flex>
                   </v-layout>
               </tab >
-              <tab prefix="<i class='material-icons icon'>notes</i>" name = "Дополнительная информация">
+              <tab prefix="<i class='material-icons icon'>description</i>" name = "Протоколы">
                 <v-layout row wrap>
                   <v-flex xs12 offset-md1 md10>
                     <h3 style="font-size: 120%;  color: #ffffff">Рабочая программа утверждена на кафедре </h3>
@@ -153,11 +153,7 @@
                   </v-flex>
                 </v-layout>
               </tab >
-              <tab prefix="<i class='material-icons icon'>insert_drive_file</i>" name = "Загрузка учебного плана">
-                    <uploadxls></uploadxls>
-              </tab >
-
-              <tab prefix="<i class='material-icons icon'>insert_drive_file</i>" name = "Tab4">
+              <tab prefix="<i class='material-icons icon'>insert_drive_file</i>" name = "Дополнительная информация">
                   <v-layout row wrap>
                     <v-flex xs12 offset-md1 md5>
                       <v-text-field
@@ -232,10 +228,11 @@
                     </v-flex>
                   </v-layout>
               </tab >
-
-              <tab prefix="<i class='material-icons icon'>insert_drive_file</i>" name = "Литература">
+              <tab prefix="<i class='material-icons icon'>library_books</i>" name = "Литература">
                   <v-layout row wrap>
-                    <h4 class="white--text text-xs-center my-0">Список литературы</h4>
+                      <v-flex xs12 offset-md1 md10>
+                        <h4 class="white--text text-xs-center my-0">Список литературы</h4>
+                      </v-flex>
                     <v-layout  row wrap v-for="item in rpd.items" class="l-budget-item" :key="item.id">
                 <v-flex xs12 offset-md1 md3>
                   <v-text-field label="Наименование"
@@ -262,8 +259,7 @@
                   </v-text-field>
                 </v-flex>
 
-                  <v-btn class="lighten-1--text" @click.native="removeItem(item)">x</v-btn>
-
+                  <v-btn icon top class="lighten-1--text" @click.native="removeItem(item)"><i class='material-icons icon'>highlight_off</i></v-btn>
         </v-layout>
               <v-flex xs12 md4 offset-md8>
                 <v-btn block color="md-add-item-btn light-blue lighten-1" @click.native="addItem()">Добавить поле</v-btn>
@@ -272,8 +268,12 @@
                   </v-layout>
               </tab >
 
-
-
+              <tab prefix="<i class='material-icons icon'>attach_file</i>" name = "Загрузка учебного плана">
+                    <uploadxls></uploadxls>
+              </tab >
+              <tab prefix="<i class='material-icons icon'>vertical_align_bottom</i>" name = "Сгенерировать РПД">
+                    <uploadxls></uploadxls>
+              </tab >
           </tabs>
 
 
