@@ -2,10 +2,7 @@
   <header class="l-header-container">
     <v-layout row wrap :class="rpdsVisible ? 'l-rpds-header' : 'l-clients-header'">
       <v-flex xs12  md2>
-        <v-btn block
-               :color="rpdsVisible ? 'light-blue lighten-1' : 'green lighten-1'">
-               {{"LOGO"}}
-        </v-btn>
+        <img src="../assets/images/Logo.png" alt="">
       </v-flex>
       <v-flex xs12 offset-md1 md1>
         <v-btn block
@@ -67,7 +64,9 @@
 
 <style lang="scss">
   @import "./../assets/styles";
-
+  .flex.xs12.md2 img {
+      width: 95%;
+  }
   .l-header-container {
     background-color: $background-color;
     margin: 0 auto;
