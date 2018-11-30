@@ -282,13 +282,15 @@
               <tab prefix="<i class='material-icons icon'>attach_file</i>" name = "Загрузка учебного плана">
                     <uploadxls></uploadxls>
               </tab >
-              <tab prefix="<i class='material-icons icon'>vertical_align_bottom</i>" name = "Сгенерировать РПД">
+              <tab prefix="<i class='material-icons icon'>vertical_align_bottom</i>" name = "Генерация РПД">
               <v-layout row wrap>
-                <v-flex xs12 md4 offset-md8>
-                  <v-btn color="md-add-item-btn green lighten-1" @click.native="exportRpd(rpd)">Сгенерировать РПД</v-btn>
-                    <div class="file">
+                <progressCustom></progressCustom>
+                <v-flex xs12  offset-md1 md10>
+                  <h3 style="font-size: 120%;  color: #ffffff">Нажмите, чтобы сгенерировать РПД  </h3>
+                </v-flex>
+              <v-flex xs12  offset-md1 md10>
 
-                    </div>
+                  <v-btn color="md-add-item-btn  lighten-1" @click.native="exportRpd(rpd)">Сгенерировать РПД</v-btn>
                   </v-flex>
                     </v-layout>
               </tab >
@@ -305,11 +307,12 @@
 
 <script>
 import uploadxls from './../Creation/uploadxls'
-
+import progressCustom from './../progressCustom'
 export default {
   props: ['clients', 'saveRpd', 'exportRpd'],
   components: {
-    'uploadxls': uploadxls
+    'uploadxls': uploadxls,
+    'progressCustom': progressCustom
   },
   data () {
     return {
