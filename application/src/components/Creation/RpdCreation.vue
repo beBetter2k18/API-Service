@@ -5,22 +5,6 @@
               <tab prefix="<i class='material-icons icon'>info</i>"  name = "Основная информация">
                 <v-layout row wrap>
                   <v-flex xs12 offset-md1 md5>
-                    <v-text-field label="Дисциплина"
-                                  v-model="rpd.title"
-                                  required
-                                  color="light-blue lighten-1">
-                    </v-text-field>
-                  </v-flex>
-
-                  <v-flex xs12 offset-md1 md5>
-                    <v-text-field
-                      label="Шифр дисциплины"
-                      v-model="rpd.codeD"
-                    >
-                    </v-text-field>
-                  </v-flex>
-
-                  <v-flex xs12 offset-md1 md5>
                     <v-select
                       label="Автор"
                       :items="clients"
@@ -37,6 +21,21 @@
                       v-model="rpd.state"
                     >
                     </v-select>
+                  </v-flex>
+                  <v-flex xs12 offset-md1 md5>
+                    <v-text-field label="Дисциплина"
+                                  v-model="rpd.title"
+                                  required
+                                  color="light-blue lighten-1">
+                    </v-text-field>
+                  </v-flex>
+
+                  <v-flex xs12 offset-md1 md5>
+                    <v-text-field
+                      label="Шифр дисциплины"
+                      v-model="rpd.codeD"
+                    >
+                    </v-text-field>
                   </v-flex>
                   <v-flex xs12 offset-md1 md10>
                     <v-radio-group v-model="rpd.radio_bachelor_master" row required>
@@ -56,6 +55,14 @@
                       value="graduateSchool"
                     ></v-radio>
                   </v-radio-group>
+                  </v-flex>
+
+                  <v-flex xs12 offset-md1 md10>
+                    <v-text-field
+                      label="Направление подготовки"
+                      v-model="rpd.naprPodg"
+                    >
+                    </v-text-field>
                   </v-flex>
 
                 <v-flex xs12 offset-md1 md3>
@@ -110,6 +117,8 @@
 
                   <v-flex xs12 offset-md1 md3>
                     <v-text-field
+                      placeholder="«___»________20__года"
+                      type="date"
                       label="Дата"
                       v-model="rpd.dataKafedra"
                     >
@@ -138,6 +147,8 @@
 
                   <v-flex xs12 offset-md1 md3>
                     <v-text-field
+                      placeholder="«___»________20__года"
+                      type="date"
                       label="Дата"
                       v-model="rpd.dataUmk"
                     >
@@ -213,7 +224,7 @@
                       <v-text-field
                         label="Вопрос на зачет/экзамен"
                         textarea
-                        v-model="rpd.own"
+                        v-model="rpd.questionsZach"
                       >
                       </v-text-field>
                     </v-flex>
@@ -222,7 +233,7 @@
                       <v-text-field
                         label="Методические материалы"
                         textarea
-                        v-model="rpd.own"
+                        v-model="rpd.metodMaterial"
                       >
                       </v-text-field>
                     </v-flex>
@@ -272,7 +283,14 @@
                     <uploadxls></uploadxls>
               </tab >
               <tab prefix="<i class='material-icons icon'>vertical_align_bottom</i>" name = "Сгенерировать РПД">
-                    <uploadxls></uploadxls>
+              <v-layout row wrap>
+                <v-flex xs12 md4 offset-md8>
+                  <v-btn color="md-add-item-btn green lighten-1" @click.native="exportRpd(rpd)">Сгенерировать РПД</v-btn>
+                    <div class="file">
+
+                    </div>
+                  </v-flex>
+                    </v-layout>
               </tab >
           </tabs>
 
@@ -287,8 +305,9 @@
 
 <script>
 import uploadxls from './../Creation/uploadxls'
+
 export default {
-  props: ['clients', 'saveRpd'],
+  props: ['clients', 'saveRpd', 'exportRpd'],
   components: {
     'uploadxls': uploadxls
   },
@@ -308,6 +327,25 @@ export default {
         numberIndependentWork: null,
         state: 'редактируется',
         client: null,
+        metodMaterial: null,
+        questionsZach: null,
+        own: null,
+        can: null,
+        know: null,
+        numberCompetent: null,
+        predUmk: null,
+        dataUmk: null,
+        numProtocolUmk: null,
+        zavKafedra: null,
+        dataKafedra: null,
+        numProtocolKafedra: null,
+        rukOpop: null,
+        section: null,
+        department: null,
+        faculty: null,
+        radio_bachelor_master: null,
+        codeD: null,
+        naprPodg: null,
         items: [
           {
             title: null,

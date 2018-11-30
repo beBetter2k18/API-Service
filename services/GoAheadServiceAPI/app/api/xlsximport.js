@@ -54,13 +54,24 @@ api.importxls = (UchPlan) => (req, res) => {
                 if(err) {
                     return res.json({error_code:1,err_desc:err, data: null});
                 }
-                const uchplan = new UchPlan({
-                  items: result
-                });
 
-                res.json({error_code:0,err_desc:null, data: result});
+
+
+            });
+            const uchplan = new UchPlan({
+              items: req
             });
 
+            uchplan.save(error => {
+              if (error) return res.status(400).json({
+                  success: false,
+                  message: 'Ошибка'
+              });
+              res.json({
+                  success: true,
+                  message: 'Успешно'
+              });
+            })
 
 
     })

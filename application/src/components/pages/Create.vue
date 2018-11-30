@@ -1,6 +1,6 @@
 <template>
   <div class="l-create-page">
-    <rpd-creation v-if="rpdCreation && !editPage" slot="rpd-creation" :clients="clients" :saveRpd="saveRpd"></rpd-creation>
+    <rpd-creation v-if="rpdCreation && !editPage" slot="rpd-creation" :clients="clients" :saveRpd="saveRpd" :exportRpd="exportRpd"></rpd-creation>
     <client-creation v-if="!rpdCreation && !editPage" slot="client-creation" :saveClient="saveClient"></client-creation>
 
     <rpd-edit v-else-if="rpdEdit && editPage"
@@ -28,7 +28,7 @@
   import ClientEdit from './../Creation/ClientEdit'
   export default {
     props: [
-      'rpdCreation', 'clients', 'saveRpd',
+      'rpdCreation', 'clients', 'saveRpd', 'exportRpd',
       'saveClient', 'rpd', 'client', 'updateClient',
       'fixClientNameAndUpdate', 'editPage', 'rpdEdit'
     ],

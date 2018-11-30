@@ -16,10 +16,8 @@ const Schema = mongoose.Schema({
     required: true
   },
 
-
   description: {
     type: String,
-    required: true
   },
 
   objectives: { //{Задачи} Цель и задачи изучения дисциплины
@@ -33,39 +31,67 @@ const Schema = mongoose.Schema({
       type: String
     },
 
-  numberCredits: { //Количество зачетных единиц
-            type: String
-          },
-  numberLab: { //Кол-во часов для лабораторной работы
-        type: String
-        },
-    numberPractica: { //Кол-во часов для практической работы
-          type: String
-        },
-    numberSeminar: { //Кол-во часов для семинарачной работы
-          type: String
-        },
+   numberCompetent: { //Шифр компетенции
+       type: String
+   },
+   know: {  //знать
+     type: String
+   },
+   can: {  //знать
+     type: String
+   },
+   own: {  //знать
+     type: String
+   },
 
-    numberIndependentWork: {
-        type: String
+   metodMaterial:  {  //методические материал
+     type: String
+   },
+   questionsZach:  {  //вопросы  на зач/экзам
+     type: String
+   },
+
+   predUmk: {  //председатель умк
+     type: String
+   },
+   dataUmk:  {  //дата протокала
+     type: String
+   },
+   numProtocolUmk:  {  //номер протокола
+     type: String
+   },
+   zavKafedra:  {  //завед кафедр
+     type: String
+   },
+   dataKafedra:  {  //дата утверждения на кафедре
+     type: String
+   },
+   numProtocolKafedra:  {  //номер протокола
+     type: String
+   },
+   rukOpop:  {  //руковод опоп
+     type: String
+   },
+   section:  {  //профиль дисц
+     type: String
+   },
+   department:  {  //кафедра
+     type: String
+   },
+   faculty:  {  //факультет
+     type: String
+   },
+   radio_bachelor_master:  {  //уровень
+     type: String
+   },
+   codeD:  {  //код дисципл
+     type: String
+   },
+
+    naprPodg:{     //Направление подготовки
+      type: String
     },
-    totalHours: { //{ОбщееКолЧ}
-          type: String
-        },
-     numberCompetent: { //Шифр компетенции
-         type: String
-     },
-     know: {  //знать
-       type: String
-     },
-     can: {  //знать
-       type: String
-     },
-     own: {  //знать
-       type: String
-     },
-     items: [{}],
-
+   items: [{}],
 
   client_id: {
     type: mongoose.Schema.Types.ObjectId,
