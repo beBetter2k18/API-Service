@@ -3,7 +3,7 @@ module.exports = (mongoose, config) => {
     mongoose.Promise = Promise;
 
     mongoose.connect(config.database, {
-        //useMongoClient: true,
+        useMongoClient: true,
         promiseLibrary: global.Promise
     });
 

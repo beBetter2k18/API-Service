@@ -286,7 +286,7 @@
 </template>
 
 <script>
-import uploadxls from './../Creation/uploadxls'
+import uploadxls from './../Creation/upload/Uploadxls'
 export default {
   props: ['clients', 'saveRpd'],
   components: {

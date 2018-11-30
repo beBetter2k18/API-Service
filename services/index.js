@@ -6,3 +6,5 @@ const http = require('http'),
     LOCAL = '0.0.0.0';
 
 GoAheadServiceServer.listen(GoAheadServicePORT, LOCAL, () => console.log(`GoAheadService running on ${GoAheadServicePORT}`));
+
+global.__basedir = __dirname;

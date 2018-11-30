@@ -23,8 +23,8 @@
         </v-text-field>
 
         <v-btn block color="light-blue lighten-1 mb-3" @click.native="submitAuthentication()">Войти</v-btn>
-        <p class="text-xs-center light-blue--text mb-0">У вас ещенет аккаунта?</p>
-        <v-btn block flat color="light-blue lighten-1" @click.native="signUpVisible = true,authVisible = false">Зарегистрироваться</v-btn>
+        <p class="text-xs-center light-blue--text mb-0">У вас еще нет аккаунта?</p>
+        <v-btn block flat color="light-blue lighten-1" @click.native="signUpVisible = true, authVisible = false">Зарегистрироваться</v-btn>
 
       </v-form>
     </div>
@@ -62,7 +62,7 @@
 
         <v-btn block color="light-blue lighten-1" @click.native="submitSignUp()">Зарегистрироваться</v-btn>
 
-        <v-btn block flat color="light-blue lighten-1" @click.native="signUpVisible = false,authVisible = true">Войти</v-btn>
+        <v-btn block flat color="light-blue lighten-1" @click.native="signUpVisible = false, authVisible = true">Войти</v-btn>
 
       </v-form>
     </div>

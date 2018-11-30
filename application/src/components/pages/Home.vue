@@ -56,7 +56,7 @@
                      @click.native="rpdCreation = false; listPage = false; editPage = false; createPage = true">
                     <v-icon>account_circle</v-icon>
               </v-btn>
-              <span>Добаввить пользователя</span>
+              <span>Добавить пользователя</span>
             </v-tooltip>
 
 
