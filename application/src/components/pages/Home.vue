@@ -1,5 +1,4 @@
 <template>
-
   <main class="l-home-page">
     <app-header :rpdsVisible="rpdsVisible"
       @toggleVisibleDataRpd="rpdsVisible=true; rpdCreation=true"
@@ -56,7 +55,7 @@
                      @click.native="rpdCreation = false; listPage = false; editPage = false; createPage = true">
                     <v-icon>account_circle</v-icon>
               </v-btn>
-              <span>Добавить пользователя</span>
+              <span>Добаввить пользователя</span>
             </v-tooltip>
 
 
@@ -81,6 +80,7 @@
         :rpd="rpd"
         :client="client"
         :saveRpd="saveRpd"
+        :exportRpd="exportRpd"
         :saveClient="saveClient"
         :fixClientNameAndUpdate="fixClientNameAndUpdate"
         :updateClient="updateClient">
@@ -225,12 +225,20 @@
           params: { user_id: this.$cookie.get('user_id') }
         })
         .then(res => {
-          this.resetFields(rpd)
+          // this.resetFields(rpd)
           this.snackbar = true
           this.message = res.data.message
           this.snackColor = 'green lighten-1'
           this.getAllRpds()
         })
+        .catch(error => {
+          this.errorHandler(error)
+        })
+      },
+      exportRpd (rpd) {
+        Axios.post(`${RpdManagerAPI}/api/v1/rpd/test`, rpd, {
+        })
+        .then((res) => {})
         .catch(error => {
           this.errorHandler(error)
         })
