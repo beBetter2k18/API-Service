@@ -60,6 +60,16 @@ api.importxls = (UchPlan) => (req, res) => {
             } catch (e){
                 res.json({error_code:1,err_desc:"Corupted excel file"});
             }
+        });
+        UchPlan.save(error => {
+            if (error) return res.status(400).json({
+                success: false,
+                message: 'Ошибка записи УП в БД'
+            });
+            res.json({
+                success: true,
+                message: 'Загрузка данных из УП в БД прошла успешно'
+            });
         })
 };
 
