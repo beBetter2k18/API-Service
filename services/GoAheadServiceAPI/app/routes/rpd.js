@@ -5,10 +5,7 @@ const passport = require('passport'),
       var Docxtemplater = require('docxtemplater');
       var fs = require('fs');
       var path = require('path');
-      var multer = require('multer');
-// set the directory for the uploads to the uploaded to
-var DIR = './uploads/';
-var upload = multer({dest: DIR}).single('photo');
+
 
 module.exports = (app) => {
   const api = app.GoAheadServiceAPI.app.api.rpd;
@@ -29,25 +26,6 @@ module.exports = (app) => {
   app.route('/api/v1/rpd/generate')
         .get(api.exportRpd(models.User,models.Rpd))
 
-        app.get('/upload', function(req, res, next) {
-        // render the index page, and pass data to it.
-          res.render('index', { title: 'Express' });
-        });
-
-//our file upload function.
-app.post('/upload', function (req, res, next) {
-     var path = '';
-     upload(req, res, function (err) {
-        if (err) {
-          // An error occurred when uploading
-          console.log(err);
-          return res.status(422).send("an Error occured")
-        }
-       // No error occured.
-        path = req.file.path;
-        return res.send("Upload Completed for "+path);
-  });
-})
 
   app.route('/api/v1/rpd/test')
         .post(function(req,res) {
@@ -99,7 +77,7 @@ app.post('/upload', function (req, res, next) {
 
               // buf is a nodejs buffer, you can either write it to a file or do anything else with it.
               fs.writeFileSync(path.resolve("./uploads", 'output.docx'), buf);
-              res.status(200).json(buf);
+              res.status(200).json(path.resolve("./uploads", 'output.docx'));
 
           })
 

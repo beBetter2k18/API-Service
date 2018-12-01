@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var multer = require('multer');
-var xlstojson = require("xls-to-json-lc");
+var xlstojson = require("xls-to-json");
 var xlsxtojson = require("xlsx-to-json-depfix");
 
 const api = {};

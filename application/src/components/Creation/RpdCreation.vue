@@ -284,8 +284,8 @@
               </tab >
               <tab prefix="<i class='material-icons icon'>vertical_align_bottom</i>" name = "Генерация РПД">
               <v-layout row wrap>
-                <progressCustom></progressCustom>
-                <v-flex xs12  offset-md1 md10>
+                <v-flex xs12  offset-md1 md12>
+                  <progressCustom></progressCustom>
                   <h3 style="font-size: 120%;  color: #ffffff">Нажмите, чтобы сгенерировать РПД  </h3>
                 </v-flex>
               <v-flex xs12  offset-md1 md10>
@@ -306,6 +306,7 @@
 </template>
 
 <script>
+import Axios from 'axios'
 import uploadxls from './../Creation/uploadxls'
 import progressCustom from './../progressCustom'
 export default {
@@ -400,6 +401,26 @@ export default {
     }
   }
 }
+
+Axios({
+  url: 'http://localhost:3001/uploads/output.docx',
+  method: 'GET',
+  responseType: 'blob',
+  mode: 'no-cors',
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json'
+  },
+  withCredentials: false,
+  credentials: 'same-origin'
+}).then((response) => {
+  const url = window.URL.createObjectURL(new Blob([response.data]))
+  const link = document.createElement('a')
+  link.href = url
+  link.setAttribute('download', 'file.pdf')
+  document.body.appendChild(link)
+  link.click()
+})
 </script>
 
 <style lang="scss">

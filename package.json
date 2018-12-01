@@ -37,13 +37,13 @@
         "@config": "./services/GoAheadServiceAPI/config/index.js"
     },
     "dependencies": {
-        "bcrypt": "^1.0.3",
+        "bcrypt": "^3.0.2",
         "body-parser": "^1.18.3",
         "consign": "^0.1.6",
-        "convert-excel-to-json": "^1.5.2",
         "cors": "^2.8.4",
         "docxtemplater": "^3.9.4",
         "express": "^4.16.2",
+        "form-data": "^2.3.3",
         "jsonwebtoken": "^8.1.0",
         "jszip": "^2.6.1",
         "module-alias": "^2.0.1",
@@ -53,8 +53,9 @@
         "officegen": "^0.4.7",
         "passport": "^0.4.0",
         "passport-jwt": "^3.0.0",
+        "xls-to-json": "^0.5.1",
         "xls-to-json-lc": "^0.3.4",
-        "xlsx": "^0.14.1",
-        "xlsx-to-json-depfix": "^0.2.6"
+        "xlsx-to-json-depfix": "^0.2.6",
+        "xlsx-to-json-lc": "^0.5.0"
     }
 }
